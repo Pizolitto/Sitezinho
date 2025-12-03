@@ -1,0 +1,103 @@
+/* Estilização principal */
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: #000;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  position: relative;
+  animation: bgShift 8s infinite alternate;
+}
+
+@keyframes bgShift {
+  0% { background-color: #000; }
+  50% { background-color: #0a0a0f; }
+  100% { background-color: #050505; }
+}
+
+#kykyBtn {
+  font-size: 32px;
+  padding: 20px 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #ff4081;
+  color: white;
+  box-shadow: 0 0 20px #ff4081;
+  transition: 0.3s;
+}
+
+#kykyBtn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #ff5c93;
+}
+
+#container {
+  margin-top: 30px;
+  text-align: center;
+  display: none;
+  color: white;
+}
+
+img {
+  max-width: 300px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* Emojis flutuando */
+.emoji {
+  position: absolute;
+  font-size: 30px;
+  animation: floatUp 10s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) rotate(0deg); }
+  100% { transform: translateY(-20vh) rotate(360deg); }
+}
+
+.neon-text {
+  margin-top: 10px;
+  font-size: 22px;
+  color: #ff2ec4;
+  text-shadow: 
+    0 0 5px #ff2ec4,
+    0 0 10px #ff2ec4,
+    0 0 20px #ff2ec4,
+    0 0 40px #ff2ec4;
+  animation: pulseNeon 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseNeon {
+  0% {
+    opacity: 0.6;
+    text-shadow:
+      0 0 5px #ff2ec4,
+      0 0 10px #ff2ec4,
+      0 0 20px #ff2ec4,
+      0 0 40px #ff2ec4;
+  }
+  50% {
+    opacity: 1;
+    text-shadow:
+      0 0 10px #ff2ec4,
+      0 0 20px #ff2ec4,
+      0 0 40px #ff2ec4,
+      0 0 80px #ff2ec4;
+  }
+  100% {
+    opacity: 0.6;
+    text-shadow:
+      0 0 5px #ff2ec4,
+      0 0 10px #ff2ec4,
+      0 0 20px #ff2ec4,
+      0 0 40px #ff2ec4;
+  }
+}

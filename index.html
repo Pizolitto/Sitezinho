@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kyky</title>
+
+  <!-- Importa o arquivo CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <button id="kykyBtn">Kyky</button>
+
+  <div id="container">
+    <img id="img" src="img/OI.jpg" alt="Imagem" />
+    <p id="tempo"></p>
+    <p class="neon-text">Lembre-se que seu Lilitto te ama pra sempre</p>
+  </div>
+
+  <script>
+    // Data de início do relacionamento
+    const inicioRelacionamento = new Date("2025-11-07");
+
+    document.getElementById("kykyBtn").addEventListener("click", () => {
+      document.getElementById("container").style.display = "block";
+      atualizarTempo();
+      gerarEmojis();
+    });
+
+    function atualizarTempo() {
+      const agora = new Date();
+
+      let anos = agora.getFullYear() - inicioRelacionamento.getFullYear();
+      let meses = agora.getMonth() - inicioRelacionamento.getMonth();
+      let dias = agora.getDate() - inicioRelacionamento.getDate();
+
+      if (dias < 0) {
+        meses--;
+        const ultimoMes = new Date(agora.getFullYear(), agora.getMonth(), 0).getDate();
+        dias += ultimoMes;
+      }
+
+      if (meses < 0) {
+        anos--;
+        meses += 12;
+      }
+
+      document.getElementById("tempo").innerText =
+        `Estamos juntos há: ${anos} anos, ${meses} meses e ${dias} dias ❤️`;
+    }
+
+    // Gera emojis flutuando no fundo
+    function gerarEmojis() {
+      const emojis = ["❤️", "💖", "✨", "💕", "💘"];
+      
+      setInterval(() => {
+        const emoji = document.createElement("div");
+        emoji.classList.add("emoji");
+        emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        emoji.style.left = Math.random() * 100 + "vw";
+        emoji.style.fontSize = (20 + Math.random() * 20) + "px";
+        emoji.style.animationDuration = (8 + Math.random() * 5) + "s";
+
+        document.body.appendChild(emoji);
+
+        // remover após animação
+        setTimeout(() => emoji.remove(), 15000);
+      }, 700);
+    }
+  </script>
+
+</body>
+</html>
